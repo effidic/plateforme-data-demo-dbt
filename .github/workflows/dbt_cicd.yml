@@ -7,7 +7,7 @@ on:
 jobs:
   invoke-checkall:
     runs-on: ubuntu-latest
-    container: ghcr.io/effidic/plateforme-data-demo-python/plateforme_data_demo_dbt_cicd:CICD
+    container: ghcr.io/effidic/plateforme-data-demo-dbt/plateforme_data_demo_dbt_cicd:CICD
 
     steps:
     - uses: actions/checkout@v2
