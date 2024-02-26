@@ -1,0 +1,106 @@
+# dbt run-operation stage_external_sources --args "select: infogreffe" --vars "ext_full_refresh: true" 
+version: 2
+
+
+sources:
+  - name: infogreffe
+    description: copie des tables du logiciel anael finance d'ergalis
+    schema: 0_raw_infogreffe
+    tables:
+      - name: chiffres_cles
+        description: table externe de chiffres clés provenant de l'infogreffe, téléchargés avec Python sur https://opendata.datainfogreffe.fr/explore/?sort=modified&refine.theme=Chiffres+cles
+        external:
+          location: gs://effidic-open-data/infogreffe/*
+          options:
+            format: csv
+            field_delimiter: ';'
+            quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+          - name: denomination
+            data_type: string
+          - name: siren
+            data_type: string
+          - name: nic
+            data_type: string
+          - name: forme_juridique
+            data_type: string
+          - name: code_ape
+            data_type: string
+          - name: libelle_ape
+            data_type: string
+          - name: adresse
+            data_type: string
+          - name: code_postal
+            data_type: string
+          - name: ville
+            data_type: string
+          - name: num_dept
+            data_type: string
+          - name: departement
+            data_type: string
+          - name: region
+            data_type: string
+          - name: code_greffe
+            data_type: string
+          - name: greffe
+            data_type: string
+          - name: date_immatriculation
+            data_type: string
+          - name: date_radiation
+            data_type: string
+          - name: statut
+            data_type: string
+          - name: geolocalisation
+            data_type: string
+          - name: date_de_publication
+            data_type: string
+          - name: millesime_1
+            data_type: string
+          - name: date_de_cloture_exercice_1
+            data_type: string
+          - name: duree_1
+            data_type: string
+          - name: ca_1
+            data_type: string
+          - name: resultat_1
+            data_type: string
+          - name: effectif_1
+            data_type: string
+          - name: millesime_2
+            data_type: string
+          - name: date_de_cloture_exercice_2
+            data_type: string
+          - name: duree_2
+            data_type: string
+          - name: ca_2
+            data_type: string
+          - name: resultat_2
+            data_type: string
+          - name: effectif_2
+            data_type: string
+          - name: millesime_3
+            data_type: string
+          - name: date_de_cloture_exercice_3
+            data_type: string
+          - name: duree_3
+            data_type: string
+          - name: ca_3
+            data_type: string
+          - name: resultat_3
+            data_type: string
+          - name: effectif_3
+            data_type: string
+          - name: id
+            data_type: string
+          - name: fiche_identite
+            data_type: string
+          - name: tranche_ca_millesime_1
+            data_type: string
+          - name: tranche_ca_millesime_2
+            data_type: string
+          - name: tranche_ca_millesime_3
+            data_type: string
+

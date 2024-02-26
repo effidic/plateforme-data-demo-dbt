@@ -1,0 +1,5 @@
+-r requirements.txt
+pyperclip
+invoke
+python-dotenv
+sqlfluff

@@ -1,0 +1,19 @@
+{
+    "python.analysis.extraPaths": [
+        "./utils"
+    ],
+    "files.exclude": {
+        "dbt_packages": true,
+        "logs": true,
+        "venv": true,
+        "utils": true,
+        "setup.cfg": true,
+        "packages.yml": true,
+        "profiles.yml": true,
+        ".user.yml": true,
+        ".gitignore": true,
+        ".gitlab-ci.yml": true,
+        "dbt_project.yml": true,
+        "**/__pycache__": true
+    }
+}

@@ -1,0 +1,13 @@
+version: 2
+sources:
+- name: UAT_DWH
+  schema: UAT_DWH
+  database: UAT_DB_ATLAS
+  tables:
+  - name: test_source
+    description: ''
+    columns:
+    - name: COL1
+      description: ''
+    - name: COL2
+      description: ''

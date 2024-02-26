@@ -1,0 +1,63 @@
+version: 2
+models:
+- name: stg_infogreffe__chiffres_cles
+  description: ''
+  columns:
+  - name: cd_annee
+    description: ''
+  - name: cd_ape
+    description: ''
+  - name: cd_departement
+    description: ''
+  - name: cd_geolocalisation
+    description: ''
+  - name: cd_greffe
+    description: ''
+  - name: cd_id
+    description: ''
+  - name: cd_nic
+    description: ''
+  - name: cd_postal
+    description: ''
+  - name: cd_siren
+    description: ''
+  - name: dt_cloture_exercice
+    description: ''
+  - name: dt_immatriculation
+    description: ''
+  - name: dt_publication
+    description: ''
+  - name: dt_radiation
+    description: ''
+  - name: lb_adresse
+    description: ''
+  - name: lb_ape
+    description: ''
+  - name: lb_denomination
+    description: ''
+  - name: lb_departement
+    description: ''
+  - name: lb_effectif
+    description: ''
+  - name: lb_fiche_identite
+    description: ''
+  - name: lb_fichier_source
+    description: ''
+  - name: lb_forme_juridique
+    description: ''
+  - name: lb_greffe
+    description: ''
+  - name: lb_region
+    description: ''
+  - name: lb_statut
+    description: ''
+  - name: lb_tranche_ca_millesime
+    description: ''
+  - name: lb_ville
+    description: ''
+  - name: mt_ca
+    description: ''
+  - name: mt_resultat
+    description: ''
+  - name: nb_mois_periode
+    description: ''

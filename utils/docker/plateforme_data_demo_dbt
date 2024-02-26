@@ -1,0 +1,26 @@
+# Docker image to execute dbt (LOCAL, UAT, PROD)
+
+FROM python:3.9-slim-buster
+
+RUN apt-get update
+
+ENV APPLICATION_HOME="/tmp"
+ENV DBT_PROFILES_DIR=${APPLICATION_HOME}/
+
+WORKDIR ${APPLICATION_HOME}
+
+COPY utils/requirements.txt ${APPLICATION_HOME}/
+COPY packages.yml ${APPLICATION_HOME}/
+COPY profiles.yml ${APPLICATION_HOME}/
+COPY dbt_project.yml ${APPLICATION_HOME}/
+COPY tests ${APPLICATION_HOME}/tests
+COPY seeds ${APPLICATION_HOME}/seeds
+COPY models ${APPLICATION_HOME}/models
+COPY macros ${APPLICATION_HOME}/macros
+COPY snapshots ${APPLICATION_HOME}/snapshots
+
+RUN pip3 install -U -q -r requirements.txt
+
+RUN dbt deps
+
+RUN chmod 777 -R ${APPLICATION_HOME}

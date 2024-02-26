@@ -1,0 +1,11 @@
+version: 2
+models:
+- name: test_model
+  description: ''
+  columns:
+  - name: COL1
+    description: ''
+  - name: COL2
+    description: ''
+  - name: COL3
+    description: ''

@@ -1,0 +1,16 @@
+name: DBT CI/CD Pipeline with Docker
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  invoke-checkall:
+    runs-on: ubuntu-latest
+    container: ghcr.io/effidic/plateforme-data-demo-python/plateforme_data_demo_dbt_cicd:CICD
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run invoke check-all inside Docker
+      run: cd utils/dbt_toolbox && invoke cicd-check-all

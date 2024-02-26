@@ -1,0 +1,16 @@
+# Docker image for Gitlab CICD
+
+FROM python:3.9-slim-buster
+
+RUN apt-get update
+
+ENV APPLICATION_HOME="/"
+
+
+WORKDIR ${APPLICATION_HOME}
+
+COPY utils/requirements.txt ${APPLICATION_HOME}/
+COPY utils/requirements-dev.txt ${APPLICATION_HOME}/
+
+RUN pip3 install -U -q -r requirements-dev.txt
+
