@@ -1,0 +1,1 @@
+{"_invocation_id": "f59b792e-7cb7-4cf6-99a7-d23acd19b3cb", "linked": {"0": {"name": "source.plateforme_data_demo.infogreffe.chiffres_cles", "type": "source", "succ": [1]}, "1": {"name": "model.plateforme_data_demo.stg_infogreffe__chiffres_cles", "type": "model"}}}
