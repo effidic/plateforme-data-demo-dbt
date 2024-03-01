@@ -67,6 +67,12 @@ jobs:
           -v "$(pwd)/dbt_docs:/target"
           europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
           dbt docs generate
+      
+      - name: List 1
+        run: ls -la ${GITHUB_WORKSPACE}
+
+      - name: List 2
+        run: ls -la
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
