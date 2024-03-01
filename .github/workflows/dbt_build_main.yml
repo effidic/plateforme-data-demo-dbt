@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: ./utils/docker/plateforme_data_demo_dbt
           push: true
           tags: europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main  # TODO
 
