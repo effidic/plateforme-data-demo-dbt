@@ -67,9 +67,9 @@ jobs:
           -e "KEYFILE_CLIENT_X509_CERT_URL=${{ vars.KEYFILE_CLIENT_X509_CERT_URL }}" 
           -e "KEYFILE_PRIVATE_KEY_ID=${{ vars.KEYFILE_PRIVATE_KEY_ID }}" 
           -e "KEYFILE_PRIVATE_KEY=$KEYFILE_PRIVATE_KEY" 
-          -v "$(pwd)/dbt_docs:/target"
+          -v "$(pwd)/dbt_docs:target/"
           europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
-          /bin/bash -c "dbt docs generate && ls -ltra target/"
+          /bin/bash -c "dbt docs generate && ls -ltra target/  && ls -ltra /tmp/target/"
       
       - name: List 1
         run: ls -la ${GITHUB_WORKSPACE}
