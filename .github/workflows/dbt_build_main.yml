@@ -5,33 +5,34 @@ on:
     branches:
       - main  
 
+# Nécessaire pour peaceiris/actions-gh-pages@v3, cad la publication d'une page github
 permissions:
   contents: write
 
 jobs:
-#  build_and_push:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#
-#      - name: Log in to Google Artifact Registry
-#        uses: docker/login-action@v3
-#        with:
-#          registry: europe-west1-docker.pkg.dev
-#          username: _json_key
-#          password: ${{ secrets.GAR_JSON_KEY }}
-#
-#      - name: Build and push Docker image
-#        uses: docker/build-push-action@v2
-#        with:
-#          context: .
-#          file: ./utils/docker/plateforme_data_demo_dbt
-#          push: true
-#          tags: europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main  # TODO
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Google Artifact Registry
+        uses: docker/login-action@v3
+        with:
+          registry: europe-west1-docker.pkg.dev
+          username: _json_key
+          password: ${{ secrets.GAR_JSON_KEY }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./utils/docker/plateforme_data_demo_dbt
+          push: true
+          tags: europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main  # TODO
 
   dbt_build_and_docs:
-    #needs: build_and_push
+    needs: build_and_push
     runs-on: ubuntu-latest
     steps:
       - name: Log in to Google Artifact Registry
@@ -44,22 +45,23 @@ jobs:
       - name: Pull DBT Docker Image
         run: docker pull europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
   
-      #- name: DBT Build
-      #  env:
-      #    KEYFILE_PRIVATE_KEY: ${{ secrets.KEYFILE_PRIVATE_KEY }}
-      #  run: docker run 
-      #    -e "KEYFILE_PROJECT_ID=${{ vars.KEYFILE_PROJECT_ID }}" 
-      #    -e "KEYFILE_CLIENT_EMAIL=${{ vars.KEYFILE_CLIENT_EMAIL }}" 
-      #    -e "KEYFILE_CLIENT_ID=${{ vars.KEYFILE_CLIENT_ID }}" 
-      #    -e "KEYFILE_CLIENT_X509_CERT_URL=${{ vars.KEYFILE_CLIENT_X509_CERT_URL }}" 
-      #    -e "KEYFILE_PRIVATE_KEY_ID=${{ vars.KEYFILE_PRIVATE_KEY_ID }}" 
-      #    -e "KEYFILE_PRIVATE_KEY=$KEYFILE_PRIVATE_KEY" 
-      #    europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
-      #    dbt build
+      - name: DBT Build
+        env:
+          KEYFILE_PRIVATE_KEY: ${{ secrets.KEYFILE_PRIVATE_KEY }}
+        run: docker run 
+          -e "KEYFILE_PROJECT_ID=${{ vars.KEYFILE_PROJECT_ID }}" 
+          -e "KEYFILE_CLIENT_EMAIL=${{ vars.KEYFILE_CLIENT_EMAIL }}" 
+          -e "KEYFILE_CLIENT_ID=${{ vars.KEYFILE_CLIENT_ID }}" 
+          -e "KEYFILE_CLIENT_X509_CERT_URL=${{ vars.KEYFILE_CLIENT_X509_CERT_URL }}" 
+          -e "KEYFILE_PRIVATE_KEY_ID=${{ vars.KEYFILE_PRIVATE_KEY_ID }}" 
+          -e "KEYFILE_PRIVATE_KEY=$KEYFILE_PRIVATE_KEY" 
+          europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
+          dbt build
 
       - name: DBT Docs
         env:
           KEYFILE_PRIVATE_KEY: ${{ secrets.KEYFILE_PRIVATE_KEY }}
+        # le montage de volume est nécessaire pour récupérer le dossier target (doc dbt) sur l'hote (le runner)
         run: docker run 
           -e "KEYFILE_PROJECT_ID=${{ vars.KEYFILE_PROJECT_ID }}" 
           -e "KEYFILE_CLIENT_EMAIL=${{ vars.KEYFILE_CLIENT_EMAIL }}" 
@@ -71,13 +73,6 @@ jobs:
           europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
           /bin/bash -c "dbt docs generate && pwd && ls -ltra target/  && ls -ltra /tmp/target/"
       
-      - name: List 1
-        run: ls -la ${GITHUB_WORKSPACE}
-
-      - name: List 2
-        run: ls -la dbt_docs/
-      - name: List 3
-        run: pwd
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
