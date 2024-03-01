@@ -27,7 +27,7 @@ jobs:
           push: true
           tags: europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main  # TODO
 
-  deploy:
+  dbt_build_and_docs:
     needs: build_and_push
     runs-on: ubuntu-latest
     steps:
@@ -38,10 +38,10 @@ jobs:
           username: _json_key
           password: ${{ secrets.GAR_JSON_KEY }}
 
-      - name: Pull Docker Image
+      - name: Pull DBT Docker Image
         run: docker pull europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
   
-      - name: Run Docker Image
+      - name: DBT Build
         env:
           KEYFILE_PRIVATE_KEY: ${{ secrets.KEYFILE_PRIVATE_KEY }}
         run: docker run --name testproject 
@@ -54,7 +54,19 @@ jobs:
           europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
           dbt build && dbt docs generate
 
-          
+      - name: DBT Docs
+        env:
+          KEYFILE_PRIVATE_KEY: ${{ secrets.KEYFILE_PRIVATE_KEY }}
+        run: docker run --name testproject 
+          -e "KEYFILE_PROJECT_ID=${{ vars.KEYFILE_PROJECT_ID }}" 
+          -e "KEYFILE_CLIENT_EMAIL=${{ vars.KEYFILE_CLIENT_EMAIL }}" 
+          -e "KEYFILE_CLIENT_ID=${{ vars.KEYFILE_CLIENT_ID }}" 
+          -e "KEYFILE_CLIENT_X509_CERT_URL=${{ vars.KEYFILE_CLIENT_X509_CERT_URL }}" 
+          -e "KEYFILE_PRIVATE_KEY_ID=${{ vars.KEYFILE_PRIVATE_KEY_ID }}" 
+          -e "KEYFILE_PRIVATE_KEY=$KEYFILE_PRIVATE_KEY" 
+          europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
+          dbt docs generate
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
