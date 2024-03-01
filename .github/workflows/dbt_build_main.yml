@@ -44,7 +44,7 @@ jobs:
       - name: DBT Build
         env:
           KEYFILE_PRIVATE_KEY: ${{ secrets.KEYFILE_PRIVATE_KEY }}
-        run: docker run --name testproject 
+        run: docker run 
           -e "KEYFILE_PROJECT_ID=${{ vars.KEYFILE_PROJECT_ID }}" 
           -e "KEYFILE_CLIENT_EMAIL=${{ vars.KEYFILE_CLIENT_EMAIL }}" 
           -e "KEYFILE_CLIENT_ID=${{ vars.KEYFILE_CLIENT_ID }}" 
@@ -57,7 +57,7 @@ jobs:
       - name: DBT Docs
         env:
           KEYFILE_PRIVATE_KEY: ${{ secrets.KEYFILE_PRIVATE_KEY }}
-        run: docker run --name testproject 
+        run: docker run 
           -e "KEYFILE_PROJECT_ID=${{ vars.KEYFILE_PROJECT_ID }}" 
           -e "KEYFILE_CLIENT_EMAIL=${{ vars.KEYFILE_CLIENT_EMAIL }}" 
           -e "KEYFILE_CLIENT_ID=${{ vars.KEYFILE_CLIENT_ID }}" 
