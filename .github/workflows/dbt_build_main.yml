@@ -72,7 +72,7 @@ jobs:
         run: ls -la ${GITHUB_WORKSPACE}
 
       - name: List 2
-        run: ls -la
+        run: ls -la dbt_docs/
       - name: List 3
         run: pwd
       - name: Deploy to GitHub Pages
