@@ -52,4 +52,11 @@ jobs:
           -e "KEYFILE_PRIVATE_KEY_ID=${{ vars.KEYFILE_PRIVATE_KEY_ID }}" 
           -e "KEYFILE_PRIVATE_KEY=$KEYFILE_PRIVATE_KEY" 
           europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
-          dbt build
+          dbt build && dbt docs
+
+          
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target 
