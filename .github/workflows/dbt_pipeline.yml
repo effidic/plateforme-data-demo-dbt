@@ -1,0 +1,26 @@
+name: Pipeline de mise en production
+run-name: ${{ github.actor }} est en train de mettre en production
+
+on:
+  push:
+    branches:
+      - main  
+
+# Nécessaire pour peaceiris/actions-gh-pages@v3, cad la publication d'une page github
+permissions:
+  contents: write
+
+jobs:
+  dbt_build_docker:
+    name: Appel du workflow enfant dbt build docker
+    uses: ./.github/workflows/dbt_build_docker.yml
+
+  dbt_build:
+    needs: dbt_build_docker
+    name: Appel du workflow enfant dbt run
+    uses: ./.github/workflows/dbt_run.yml
+
+  dbt_doc:
+    needs: dbt_build_docker
+    name: Appel du workflow enfant dbt doc
+    uses: ./.github/workflows/dbt_doc.yml
