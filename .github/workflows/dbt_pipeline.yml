@@ -11,18 +11,18 @@ permissions:
 
 jobs:
   dbt_build_docker:
-    name: Appel du workflow enfant dbt build docker
+    name: A01
     uses: ./.github/workflows/dbt_build_docker.yml
     secrets: inherit
 
   dbt_build:
     needs: dbt_build_docker
-    name: Appel du workflow enfant dbt run
+    name: A02a
     uses: ./.github/workflows/dbt_run.yml
     secrets: inherit
 
   dbt_doc:
     needs: dbt_build_docker
-    name: Appel du workflow enfant dbt doc
+    name: A02b
     uses: ./.github/workflows/dbt_doc.yml
     secrets: inherit

@@ -5,7 +5,7 @@ on:
 
 jobs:
     dbt_doc:
-        name: Exécution de DBT
+        name: Génération doc DBT
         runs-on: ubuntu-latest
         steps:
           - name: Log in to Google Artifact Registry

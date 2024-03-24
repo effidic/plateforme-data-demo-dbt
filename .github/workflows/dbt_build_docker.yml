@@ -5,7 +5,7 @@ on:
 
 jobs:
     dbt_build_docker:
-      name: Construction de l'image docker DBT et upload sur Google Artifact Repository
+      name: Construction Image docker
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code

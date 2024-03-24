@@ -5,7 +5,7 @@ on:
 
 jobs:
     dbt_run:
-        name: Exécution de DBT
+        name: Run DBT BigQuery
         runs-on: ubuntu-latest
         steps:
           - name: Log in to Google Artifact Registry
