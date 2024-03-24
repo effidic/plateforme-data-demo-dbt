@@ -2,9 +2,8 @@ name: Pipeline de mise en production
 run-name: ${{ github.actor }} est en train de mettre en production
 
 on:
-  push:
-    branches:
-      - main  
+  pull_request:
+    branches: [ "main" ]
 
 # Nécessaire pour peaceiris/actions-gh-pages@v3, cad la publication d'une page github
 permissions:
