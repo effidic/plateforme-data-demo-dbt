@@ -30,5 +30,5 @@ jobs:
   refresh_powerbi:
     needs: dbt_run
     name: A02b
-    uses: effidic/plateforme-data-demo-powerbi/.github/workflows/python_run_main.yml
+    uses: effidic/plateforme-data-demo-powerbi/.github/workflows/python_run_main.yml@main
     secrets: inherit
