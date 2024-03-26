@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/dbt_build_docker.yml
     secrets: inherit
 
-  dbt_build:
+  dbt_run:
     needs: dbt_build_docker
     name: A02a
     uses: ./.github/workflows/dbt_run.yml
@@ -25,4 +25,10 @@ jobs:
     needs: dbt_build_docker
     name: A02b
     uses: ./.github/workflows/dbt_doc.yml
+    secrets: inherit
+
+  refresh_powerbi:
+    needs: dbt_run
+    name: A02b
+    uses: effidic/plateforme-data-demo-powerbi/.github/workflows/dbt_doc.yml
     secrets: inherit
