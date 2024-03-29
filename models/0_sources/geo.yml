@@ -1,0 +1,58 @@
+# dbt run-operation stage_external_sources --args "select: geo_etablissement_sirene" --vars "ext_full_refresh: true" 
+
+version: 2
+
+sources:
+  - name: geo_etablissement_sirene
+    description: Test
+    schema: 0_raw_geo
+    tables:
+      - name: geolocalisation_etablissement
+        description: test
+        external:
+          location: gs://effidic-open-data/geo/*
+          options:
+            format: csv
+            field_delimiter: ';'
+            # quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+          - name: siret
+            data_type: string
+          - name: x
+            data_type: string
+          - name: y
+            data_type: string
+          - name: qualite_xy
+            data_type: string
+          - name: epsg
+            data_type: string
+          - name: plg_qp
+            data_type: string
+          - name: plg_iris
+            data_type: string
+          - name: plg_zus
+            data_type: string
+          - name: plg_qva
+            data_type: string
+          - name: plg_code_commune
+            data_type: string
+          - name: distance_precision
+            data_type: string
+          - name: qualite_qp
+            data_type: string
+          - name: qualite_iris
+            data_type: string
+          - name: qualite_zus
+            data_type: string
+          - name: qualite_qva
+            data_type: string
+          - name: y_latitude
+            data_type: string
+          - name: x_longitude
+            data_type: string
+          
+
+

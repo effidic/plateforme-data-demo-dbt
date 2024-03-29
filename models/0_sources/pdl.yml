@@ -1,0 +1,286 @@
+# dbt run-operation stage_external_sources --args "select: pays_de_la_loire" --vars "ext_full_refresh: true" 
+
+version: 2
+
+sources:
+  - name: pays_de_la_loire
+    description: Test
+    schema: 0_raw_pdl
+    tables:
+      - name: base_sirene_v3
+        description: test
+        external:
+          location: gs://effidic-open-data/PDL/base-sirene*.csv
+          options:
+            format: csv
+            field_delimiter: ';'
+            # quote: '"'
+            skip_leading_rows: 1
+            # preserve_ascii_control_characters: true
+        columns:
+          - name: SIREN
+            data_type: string
+          - name: NIC
+            data_type: string
+          - name: SIRET
+            data_type: string
+          - name: INSEE_COM
+            data_type: string
+          - name: Denomination_usuelle_de_l_etablissement
+            data_type: string
+          - name: Enseigne_de_l_etablissement_1
+            data_type: string
+          - name: Enseigne_de_l_etablissement_2
+            data_type: string
+          - name: Enseigne_de_l_etablissement_3
+            data_type: string
+          - name: Date_de_creation_de_l_etablissement
+            data_type: string
+          - name: Date_de_la_derniere_mise_a_jour_de_l_etablissement
+            data_type: string
+          - name: Categorie_de_l_entreprise
+            data_type: string
+          - name: Annee_de_la_categorie_de_l_entreprise
+            data_type: string
+          - name: Caractere_employeur_de_l_etablissement
+            data_type: string
+          - name: Tranche_de_l_effectif_de_l_etablissement
+            data_type: string
+          - name: Annee_de_la_tranche_d_effectif_de_l_etablissement
+            data_type: string
+          - name: Etablissement_siege
+            data_type: string
+          - name: Activite_principale_de_l_etablissement
+            data_type: string
+          - name: Section_de_l_etablissement
+            data_type: string
+          - name: Sous_section_de_l_etablissement
+            data_type: string
+          - name: Code_postal_de_l_etablissement
+            data_type: string
+          - name: Commune_de_l_etablissement
+            data_type: string
+          - name: Premiere_ligne_de_l_adressage
+            data_type: string
+          - name: Adresse_de_l_etablissement
+            data_type: string
+          - name: Territoire
+            data_type: string
+          - name: Geolocalisation_de_l_etablissement
+            data_type: string
+          - name: Sigle_de_l_unite_legale
+            data_type: string
+          - name: Denomination_de_l_unite_legale
+            data_type: string
+          - name: Caractere_employeur_de_l_unite_legale
+            data_type: string
+          - name: Tranche_de_l_effectif_de_l_unite_legale
+            data_type: string
+          - name: Denomination_usuelle_de_l_unite_legale_1
+            data_type: string
+          - name: Denomination_usuelle_de_l_unite_legale_2
+            data_type: string
+          - name: Denomination_usuelle_de_l_unite_legale_3
+            data_type: string
+          - name: Categorie_juridique_de_l_unite_legale
+            data_type: string
+          - name: Libelle_categorie_juridique
+            data_type: string
+          - name: Civilite_de_la_personne_physique
+            data_type: string
+          - name: Prenom_usuel_de_la_personne_physique
+            data_type: string
+          - name: Pseudonyme_de_la_personne_physique
+            data_type: string
+          - name: Nom_de_la_personne_physique
+            data_type: string
+          - name: Nom_d_usage_de_la_personne_physique
+            data_type: string
+          - name: Economie_sociale_et_solidaire_unite_legale
+            data_type: string
+          - name: PLUI
+            data_type: string
+      - name: observatoire_communication
+        description: test
+        external:
+          location: gs://effidic-open-data/PDL/observatoire*.csv
+          options:
+            format: csv
+            field_delimiter: ';'
+            # quote: '"'
+            skip_leading_rows: 1
+            # preserve_ascii_control_characters: true
+        columns:
+          - name: Commune
+            data_type: string
+          - name: epci
+            data_type: string
+          - name: Departement
+            data_type: string
+          - name: Region
+            data_type: string
+          - name: sup_id
+            data_type: string
+          - name: id
+            data_type: string
+          - name: generation
+            data_type: string
+          - name: Technologie
+            data_type: string
+          - name: code_departement
+            data_type: string
+          - name: code_insee
+            data_type: string
+          - name: date_de_mise_a_jour
+            data_type: string
+          - name: sta_nm_anfr
+            data_type: string
+          - name: nat_id
+            data_type: string
+          - name: sup_nm_haut
+            data_type: string
+          - name: tpo_id
+            data_type: string
+          - name: adr_lb_lieu
+            data_type: string
+          - name: adr_lb_add1
+            data_type: string
+          - name: adr_lb_add2
+            data_type: string
+          - name: adr_lb_add3
+            data_type: string
+          - name: Code_postal
+            data_type: string
+          - name: INSEE
+            data_type: string
+          - name: coord
+            data_type: string
+          - name: recordid
+            data_type: string
+          - name: adm_lb_lnom
+            data_type: string
+          - name: statut
+            data_type: string
+          - name: Date_de_mise_en_service
+            data_type: string
+          - name: localisation
+            data_type: string
+      - name: borne_de_recharge
+        description: test
+        external:
+          location: gs://effidic-open-data/PDL/borne*.csv
+          options:
+            format: csv
+            field_delimiter: ';'
+            # quote: '"'
+            skip_leading_rows: 1
+            # preserve_ascii_control_characters: true
+        columns:
+          - name: nom_amenageur
+            data_type: string
+          - name: siren_amenageur
+            data_type: string
+          - name: contact_amenageur
+            data_type: string
+          - name: nom_operateur
+            data_type: string
+          - name: contact_operateur
+            data_type: string
+          - name: telephone_operateur
+            data_type: string
+          - name: nom_enseigne
+            data_type: string
+          - name: id_station_itinerance
+            data_type: string
+          - name: id_station_local
+            data_type: string
+          - name: nom_station
+            data_type: string
+          - name: implantation_station
+            data_type: string
+          - name: adresse_station
+            data_type: string
+          - name: code_insee_commune
+            data_type: string
+          - name: Nombre_points_de_charge
+            data_type: string
+          - name: id_pdc_itinerance
+            data_type: string
+          - name: id_pdc_local
+            data_type: string
+          - name: puissance_nominale
+            data_type: string
+          - name: prise_type_ef
+            data_type: string
+          - name: prise_type_2
+            data_type: string
+          - name: prise_type_combo_ccs
+            data_type: string
+          - name: prise_type_chademo
+            data_type: string
+          - name: prise_type_autre
+            data_type: string
+          - name: gratuit
+            data_type: string
+          - name: paiement_acte
+            data_type: string
+          - name: paiement_cb
+            data_type: string
+          - name: paiement_autre
+            data_type: string
+          - name: tarification
+            data_type: string
+          - name: condition_acces
+            data_type: string
+          - name: reservation
+            data_type: string
+          - name: horaires
+            data_type: string
+          - name: accessibilite_pmr
+            data_type: string
+          - name: restriction_gabarit
+            data_type: string
+          - name: station_deux_roues
+            data_type: string
+          - name: raccordement
+            data_type: string
+          - name: num_pdl
+            data_type: string
+          - name: date_mise_en_service
+            data_type: string
+          - name: Observations
+            data_type: string
+          - name: Date_de_mise_a_jour
+            data_type: string 
+          - name: cable_t2_attache
+            data_type: string
+          - name: last_modified
+            data_type: string
+          - name: datagouv_dataset_id
+            data_type: string
+          - name: datagouv_resource_id
+            data_type: string
+          - name: datagouv_organization_or_owner
+            data_type: string
+          - name: is_orga
+            data_type: string
+          - name: created_at
+            data_type: string
+          - name: libelle_region
+            data_type: string
+          - name: code_region
+            data_type: string
+          - name: loc
+            data_type: string
+          - name: libelle_departement
+            data_type: string
+          - name: libelle_epci
+            data_type: string
+          - name: siret_epci
+            data_type: string
+          - name: libelle_commune
+            data_type: string
+          - name: department
+            data_type: string
+          - name: tranche_puissance
+            data_type: string
