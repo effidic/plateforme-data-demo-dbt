@@ -9,6 +9,6 @@ SELECT
     safe_divide(mt_valeur_fonciere, nb_surface_terrain) AS mt_metre_carre_terrain
 FROM {{ ref(P_TABLE) }} valeur_fonciere
 LEFT JOIN {{ ref('stg_immo__mandats') }} AS mandats
-ON mandats.cd_type_mandat = valeur_fonciere.cd_type_mandat
+    ON mandats.cd_type_mandat = valeur_fonciere.cd_type_mandat
 WHERE valeur_fonciere.mt_valeur_fonciere >= mandats.mt_borne_inf_interval
-AND valeur_fonciere.mt_valeur_fonciere <= mandats.mt_borne_sup_interval
+    AND valeur_fonciere.mt_valeur_fonciere <= mandats.mt_borne_sup_interval

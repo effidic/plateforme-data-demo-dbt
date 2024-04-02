@@ -45,6 +45,9 @@ models:
     1_staging:
       +schema: 1_stage_dbt
       +full_refresh: true 
+    2_dtm:
+      +schema: 2_dtm
+      +full_refresh: true 
 
 
 snapshots:

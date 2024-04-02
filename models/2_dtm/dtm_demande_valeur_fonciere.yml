@@ -1,0 +1,91 @@
+version: 2
+models:
+- name: dtm_demande_valeur_fonciere
+  description: ''
+  columns:
+  - name: cd_adresse_numero
+    description: ''
+  - name: cd_adresse_voie
+    description: ''
+  - name: cd_ancien_commune
+    description: ''
+  - name: cd_ancien_parcelle
+    description: ''
+  - name: cd_commune
+    description: ''
+  - name: cd_departement
+    description: ''
+  - name: cd_id_mutation
+    description: ''
+  - name: cd_latitude
+    description: ''
+  - name: cd_longitude
+    description: ''
+  - name: cd_lot1
+    description: ''
+  - name: cd_lot2
+    description: ''
+  - name: cd_lot3
+    description: ''
+  - name: cd_lot4
+    description: ''
+  - name: cd_lot5
+    description: ''
+  - name: cd_postal
+    description: ''
+  - name: cd_type_local
+    description: ''
+  - name: cd_type_mandat
+    description: ''
+  - name: cd_volume
+    description: ''
+  - name: dt_mutation
+    description: ''
+  - name: id_parcelle
+    description: ''
+  - name: lb_adresse_nom_voie
+    description: ''
+  - name: lb_adresse_suffixe
+    description: ''
+  - name: lb_ancien_commune
+    description: ''
+  - name: lb_commune
+    description: ''
+  - name: lb_fichier_source
+    description: ''
+  - name: lb_nature_mutation
+    description: ''
+  - name: lb_nombre_lots
+    description: ''
+  - name: lb_nombre_pieces_principales
+    description: ''
+  - name: lb_type_local
+    description: ''
+  - name: mt_metre_carre_bati
+    description: ''
+  - name: mt_metre_carre_lot_1
+    description: ''
+  - name: mt_metre_carre_terrain
+    description: ''
+  - name: mt_valeur_fonciere
+    description: ''
+  - name: mt_valeur_fonciere_ht
+    description: ''
+  - name: mt_valeur_fonciere_ttc
+    description: ''
+  - name: nb_disposition
+    description: ''
+  - name: nb_lot1_surface_carrez
+    description: ''
+  - name: nb_lot2_surface_carrez
+    description: ''
+  - name: nb_lot3_surface_carrez
+    description: ''
+  - name: nb_lot4_surface_carrez
+    description: ''
+  - name: nb_lot5_surface_carrez
+    description: ''
+  - name: nb_surface_reelle_bati
+    description: ''
+  - name: nb_surface_terrain
+    description: ''

@@ -1,0 +1,25 @@
+version: 2
+models:
+- name: stg_olympics__winter
+  description: ''
+  columns:
+  - name: cd_pays
+    description: ''
+  - name: dt_annee
+    description: ''
+  - name: lb_athlete
+    description: ''
+  - name: lb_discipline
+    description: ''
+  - name: lb_evenement
+    description: ''
+  - name: lb_fichier_source
+    description: ''
+  - name: lb_genre
+    description: ''
+  - name: lb_medaille
+    description: ''
+  - name: lb_sport
+    description: ''
+  - name: lb_ville
+    description: ''

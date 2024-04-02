@@ -9,7 +9,7 @@ with all_olympics AS (
     UNION ALL 
     SELECT
         olympics_winter.*,
-    FROM {{ ref(P_TABLE_1) }}AS olympics_winter
+    FROM {{ ref(P_TABLE_2) }}AS olympics_winter
 )
 SELECT 
     REPLACE(ARRAY_REVERSE(SPLIT(all_olympics.lb_fichier_source, '/'))[SAFE_OFFSET(0)], '.csv', '') as lb_saison,
