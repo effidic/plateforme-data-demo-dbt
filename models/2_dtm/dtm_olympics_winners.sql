@@ -12,13 +12,12 @@ with all_olympics AS (
     FROM {{ ref(P_TABLE_2) }}AS olympics_winter
 )
 SELECT 
-    REPLACE(ARRAY_REVERSE(SPLIT(all_olympics.lb_fichier_source, '/'))[SAFE_OFFSET(0)], '.csv', '') as lb_saison,
+    all_olympics.lb_fichier_source as lb_saison,
     all_olympics.dt_annee,
     all_olympics.lb_ville,
     all_olympics.lb_sport,
     all_olympics.lb_discipline,
-    SPLIT(all_olympics.lb_athlete, ', ')[SAFE_OFFSET(0)] AS lb_athlete_name,
-    SPLIT(all_olympics.lb_athlete, ', ')[SAFE_OFFSET(1)] AS lb_athlete_surname,
+    all_olympics.lb_athlete,
     all_olympics.cd_pays,
     olympics_dict.lb_pays,
     all_olympics.lb_genre,
