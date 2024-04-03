@@ -61,17 +61,9 @@ models:
     description: ''
   - name: lb_type_local
     description: ''
-  - name: mt_metre_carre_bati
-    description: ''
-  - name: mt_metre_carre_lot_1
-    description: ''
-  - name: mt_metre_carre_terrain
-    description: ''
   - name: mt_valeur_fonciere
     description: ''
   - name: mt_valeur_fonciere_ht
-    description: ''
-  - name: mt_valeur_fonciere_ttc
     description: ''
   - name: nb_disposition
     description: ''

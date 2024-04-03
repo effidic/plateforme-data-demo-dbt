@@ -7,9 +7,7 @@ models:
     description: ''
   - name: dt_annee
     description: ''
-  - name: lb_athlete_name
-    description: ''
-  - name: lb_athlete_surname
+  - name: lb_athlete
     description: ''
   - name: lb_discipline
     description: ''
