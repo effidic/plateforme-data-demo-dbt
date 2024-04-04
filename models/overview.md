@@ -9,7 +9,7 @@ Le projet se distingue en 3 phases :
   - 2_dtm :     il s'agit la couche de présentation des données pour les outils de reportings/analyses tels que Power BI ou Looker Studio
 {% enddocs %}
 
-{% docs plateforme_data_demo %}
+{% docs __plateforme_data_demo__ %}
 # Projet se basant sur l'Open Data pour fournir des analyses ludiques
 L'objectif de ce projet, c'est aussi montrer l'intérêt du traitement de données.
 {% enddocs %}
