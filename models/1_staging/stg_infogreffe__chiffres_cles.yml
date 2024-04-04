@@ -39,8 +39,6 @@ models:
     description: ''
   - name: lb_effectif
     description: ''
-  - name: lb_fiche_identite
-    description: ''
   - name: lb_fichier_source
     description: ''
   - name: lb_forme_juridique

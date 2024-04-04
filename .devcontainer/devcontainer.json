@@ -1,13 +1,13 @@
 {
     "name": "Python Dev Container",
 
-    // "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bookworm",
+    "image": "mcr.microsoft.com/devcontainers/anaconda:3",
 
     // Décommentez si vous utilisez un Dockerfile pour votre production et commentez la ligne du dessus
-	"build": { 
+	/*"build": { 
 		"context": "..",
 		"dockerfile": "/workspaces/plateforme-data-demo-dbt/utils/docker/plateforme_data_demo_dbt"
-	},
+	},*/
 
     // Ajoutez des extensions VS Code recommandées pour le développement Python
     "customizations": {
@@ -24,5 +24,5 @@
 
 
     // Configuration de l'exécution automatique de la commande "pip install" pour les dépendances Python
-    "postCreateCommand": "pip install --upgrade pip --user && pip install --user -r requirements.txt"
+    "postCreateCommand": "touch .env && pip install --upgrade pip --user && pip install invoke && invoke install"
 }
