@@ -44,12 +44,23 @@ models:
     +materialized: table
     1_staging:
       +schema: 1_stage_dbt
-      +full_refresh: true 
+      +docs:
+        node_color: "#2F3155"
     2_dtm:
       +schema: 2_dtm
       +full_refresh: true 
-
-
+      +docs:
+        node_color: "#EA6E61"
+  dbt_utils: # Hide package from docs
+    +docs:
+      show: false
+  dbt_external_tables: # Hide package from docs
+    +docs:
+      show: false
+  codegen: # Hide package from docs
+    +docs:
+      show: false
+      
 snapshots:
   plateforme_data_demo:
     
