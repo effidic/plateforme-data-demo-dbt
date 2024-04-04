@@ -1,0 +1,34 @@
+name: Pipeline de mise en production
+run-name: ${{ github.actor }} est en train de mettre en production
+
+on:
+  push:
+    branches: [ "main" ]
+
+# Nécessaire pour peaceiris/actions-gh-pages@v3, cad la publication d'une page github
+permissions:
+  contents: write
+
+jobs:
+  dbt_build_docker:
+    name: A01
+    uses: ./.github/workflows/dbt_build_docker.yml
+    secrets: inherit
+
+  dbt_run:
+    needs: dbt_build_docker
+    name: A02a
+    uses: ./.github/workflows/dbt_run.yml
+    secrets: inherit
+
+  dbt_doc:
+    needs: dbt_build_docker
+    name: A02b
+    uses: ./.github/workflows/dbt_doc.yml
+    secrets: inherit
+
+  refresh_powerbi:
+    needs: dbt_run
+    name: A03
+    uses: effidic/plateforme-data-demo-powerbi/.github/workflows/python_run_main.yml@main
+    secrets: inherit

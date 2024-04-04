@@ -1,0 +1,32 @@
+name: Exécution de DBT
+
+on:
+    workflow_call:
+
+jobs:
+    dbt_run:
+        name: Run DBT BigQuery
+        runs-on: ubuntu-latest
+        steps:
+          - name: Log in to Google Artifact Registry
+            uses: docker/login-action@v3
+            with:
+              registry: europe-west1-docker.pkg.dev
+              username: _json_key
+              password: ${{ secrets.GAR_JSON_KEY }}
+    
+          - name: Pull DBT Docker Image
+            run: docker pull europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
+      
+          - name: DBT Build
+            env:
+              KEYFILE_PRIVATE_KEY: ${{ secrets.KEYFILE_PRIVATE_KEY }}
+            run: docker run 
+              -e "KEYFILE_PROJECT_ID=${{ vars.KEYFILE_PROJECT_ID }}" 
+              -e "KEYFILE_CLIENT_EMAIL=${{ vars.KEYFILE_CLIENT_EMAIL }}" 
+              -e "KEYFILE_CLIENT_ID=${{ vars.KEYFILE_CLIENT_ID }}" 
+              -e "KEYFILE_CLIENT_X509_CERT_URL=${{ vars.KEYFILE_CLIENT_X509_CERT_URL }}" 
+              -e "KEYFILE_PRIVATE_KEY_ID=${{ vars.KEYFILE_PRIVATE_KEY_ID }}" 
+              -e "KEYFILE_PRIVATE_KEY=$KEYFILE_PRIVATE_KEY" 
+              europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
+              dbt build
