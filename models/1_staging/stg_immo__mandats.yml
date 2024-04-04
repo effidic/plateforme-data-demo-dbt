@@ -1,0 +1,21 @@
+version: 2
+models:
+- name: stg_immo__mandats
+  description: ''
+  columns:
+  - name: cd_type_mandat
+    description: ''
+  - name: lb_fichier_source
+    description: ''
+  - name: mt_borne_inf_interval
+    description: ''
+  - name: mt_borne_sup_interval
+    description: ''
+  - name: mt_complement
+    description: ''
+  - name: mt_frais_plat
+    description: ''
+  - name: mt_frais_pourcentage
+    description: ''
+  - name: mt_frais_stationnement
+    description: ''

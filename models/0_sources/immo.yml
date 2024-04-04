@@ -1,0 +1,128 @@
+# dbt run-operation stage_external_sources --args "select: immobilier" --vars "ext_full_refresh: true" 
+
+version: 2
+
+sources:
+  - name: immobilier
+    description: Test
+    schema: 0_raw_immo
+    tables:
+      - name: demande_valeur_fonciere
+        description: test
+        external:
+          location: gs://effidic-open-data/immo/demande-valeur-fonciere*
+          options:
+            format: csv
+            field_delimiter: ','
+            # quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+            compression: 'GZIP'
+        columns:
+          - name: id_mutation
+            data_type: string
+          - name: date_mutation
+            data_type: string
+          - name: numero_disposition
+            data_type: string
+          - name: nature_mutation
+            data_type: string
+          - name: valeur_fonciere
+            data_type: string
+          - name: adresse_numero
+            data_type: string
+          - name: adresse_suffixe
+            data_type: string
+          - name: adresse_nom_voie
+            data_type: string
+          - name: adresse_code_voie
+            data_type: string
+          - name: code_postal
+            data_type: string
+          - name: code_commune
+            data_type: string
+          - name: nom_commune
+            data_type: string
+          - name: code_departement
+            data_type: string
+          - name: ancien_code_commune
+            data_type: string
+          - name: ancien_nom_commune
+            data_type: string
+          - name: id_parcelle
+            data_type: string
+          - name: ancien_id_parcelle
+            data_type: string
+          - name: numero_volume
+            data_type: string
+          - name: lot1_numero
+            data_type: string
+          - name: lot1_surface_carrez
+            data_type: string
+          - name: lot2_numero
+            data_type: string
+          - name: lot2_surface_carrez
+            data_type: string
+          - name: lot3_numero
+            data_type: string
+          - name: lot3_surface_carrez
+            data_type: string
+          - name: lot4_numero
+            data_type: string
+          - name: lot4_surface_carrez
+            data_type: string
+          - name: lot5_numero
+            data_type: string
+          - name: lot5_surface_carrez
+            data_type: string
+          - name: nombre_lots
+            data_type: string
+          - name: code_type_local
+            data_type: string
+          - name: type_local
+            data_type: string
+          - name: surface_reelle_bati
+            data_type: string
+          - name: nombre_pieces_principales
+            data_type: string
+          - name: code_nature_culture
+            data_type: string
+          - name: nature_culture
+            data_type: string
+          - name: code_nature_culture_speciale
+            data_type: string
+          - name: nature_culture_speciale
+            data_type: string
+          - name: surface_terrain
+            data_type: string
+          - name: longitude
+            data_type: string
+          - name: latitude
+            data_type: string
+
+      - name: mandats
+        description: test
+        external:
+          location: gs://effidic-open-data/immo/mandats*
+          options:
+            format: csv
+            field_delimiter: ';'
+            # quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+          - name: type
+            data_type: string
+          - name: intervalle
+            data_type: string
+          - name: frais_flat
+            data_type: string
+          - name: frais_pourcentage
+            data_type: string
+          - name: stationnement
+            data_type: string
+          - name: complement
+            data_type: string
+          

@@ -1,0 +1,26 @@
+with source as (
+      select _FILE_NAME , *  from {{ source('geo_etablissement_sirene', 'geolocalisation_etablissement') }}
+)
+renamed as (
+    SELECT 
+        siret as cd_siret,
+        x as cd_x,
+        y as cd_y,
+        qualite_xy as cd_qualite_xy,
+        epsg as lb_epsg,
+        --## plg_qp as cd_plg_qp,
+        --## plg_iris as cd_,
+        --## plg_zus as cd_,
+        --## plg_qva as cd_,
+        --## plg_code_commune as cd_,
+        --## distance_precision as cd_,
+        --## qualite_qp as cd_,
+        --## qualite_iris as cd_,
+        --## qualite_zus as cd_,
+        --## qualite_qva as cd_,
+        y_latitude as cd_y_latitude,
+        x_longitude as cd_x_longitude
+    FROM source
+)
+
+select * from renamed

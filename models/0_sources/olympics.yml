@@ -1,0 +1,89 @@
+# dbt run-operation stage_external_sources --args "select: olympics" --vars "ext_full_refresh: true" 
+
+version: 21
+
+sources:
+  - name: olympics
+    description: Test
+    schema: 0_raw_olympics
+    tables:
+      - name: dictionnaire
+        description: test
+        external:
+          location: gs://effidic-open-data/olympics/dict*
+          options:
+            format: csv
+            field_delimiter: ','
+            quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+        - name: Pays
+          data_type: string
+        - name: Code
+          data_type: string
+        - name: Population
+          data_type: string
+        - name: Pib_par_habitant
+          data_type: string
+      - name: summer
+        description: test
+        external:
+          location: gs://effidic-open-data/olympics/summer*
+          options:
+            format: csv
+            field_delimiter: ','
+            quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+            - name: Annee
+              data_type: string
+            - name: Ville
+              data_type: string
+            - name: Sport
+              data_type: string
+            - name: Discipline
+              data_type: string
+            - name: Athlete
+              data_type: string
+            - name: Pays
+              data_type: string
+            - name: Genre
+              data_type: string
+            - name: Evenement
+              data_type: string
+            - name: Medaille
+              data_type: string
+      - name: winter
+        description: test
+        external:
+          location: gs://effidic-open-data/olympics/winter*
+          options:
+            format: csv
+            field_delimiter: ','
+            quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+          - name: Annee
+            data_type: string
+          - name: Ville
+            data_type: string
+          - name: Sport
+            data_type: string
+          - name: Discipline
+            data_type: string
+          - name: Athlete
+            data_type: string
+          - name: Pays
+            data_type: string
+          - name: Genre
+            data_type: string
+          - name: Evenement
+            data_type: string
+          - name: Medaille
+            data_type: string

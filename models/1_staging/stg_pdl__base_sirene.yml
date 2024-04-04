@@ -1,0 +1,57 @@
+version: 2
+models:
+- name: stg_pdl__base_sirene
+  description: ''
+  columns:
+  - name: bl_est_employeur
+    description: ''
+  - name: bl_siege
+    description: ''
+  - name: cd_activite
+    description: ''
+  - name: cd_annee_categorisation
+    description: ''
+  - name: cd_annee_tranche_effectif
+    description: ''
+  - name: cd_insee
+    description: ''
+  - name: cd_nic
+    description: ''
+  - name: cd_plui
+    description: ''
+  - name: cd_postal
+    description: ''
+  - name: cd_siren
+    description: ''
+  - name: cd_siret
+    description: ''
+  - name: dt_creation
+    description: ''
+  - name: dt_update
+    description: ''
+  - name: lb_adresse
+    description: ''
+  - name: lb_categorie
+    description: ''
+  - name: lb_commune
+    description: ''
+  - name: lb_denomination
+    description: ''
+  - name: lb_enseignes
+    description: ''
+  - name: lb_fichier_source
+    description: ''
+  - name: lb_geolocalisation_x
+    description: ''
+  - name: lb_geolocalisation_y
+    description: ''
+  - name: lb_proprietaire_adresse
+    description: ''
+  - name: lb_section
+    description: ''
+  - name: lb_sous_section
+    description: ''
+  - name: lb_territoire
+    description: ''
+  - name: lb_tranche_effectif
+    description: ''

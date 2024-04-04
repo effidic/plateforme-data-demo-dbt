@@ -1,0 +1,15 @@
+version: 2
+models:
+- name: stg_olympics__dictionnaire
+  description: ''
+  columns:
+  - name: cd_pays
+    description: ''
+  - name: lb_fichier_source
+    description: ''
+  - name: lb_pays
+    description: ''
+  - name: mt_pib_par_habitant
+    description: ''
+  - name: nb_population
+    description: ''

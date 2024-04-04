@@ -1,13 +1,13 @@
 {
     "name": "Python Dev Container",
 
-    "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bookworm",
+    // "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bookworm",
 
     // Décommentez si vous utilisez un Dockerfile pour votre production et commentez la ligne du dessus
-	// "build": { 
-	// 	"context": "..",
-	// 	"dockerfile": "Dockerfile"
-	// },
+	"build": { 
+		"context": "..",
+		"dockerfile": "/workspaces/plateforme-data-demo-dbt/utils/docker/plateforme_data_demo_dbt"
+	},
 
     // Ajoutez des extensions VS Code recommandées pour le développement Python
     "customizations": {

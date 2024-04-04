@@ -1,0 +1,29 @@
+version: 2
+models:
+- name: dtm_olympics_winners
+  description: ''
+  columns:
+  - name: cd_pays
+    description: ''
+  - name: dt_annee
+    description: ''
+  - name: lb_athlete
+    description: ''
+  - name: lb_discipline
+    description: ''
+  - name: lb_evenement
+    description: ''
+  - name: lb_genre
+    description: ''
+  - name: lb_medaille
+    description: ''
+  - name: lb_pays
+    description: ''
+  - name: lb_saison
+    description: ''
+  - name: lb_sport
+    description: ''
+  - name: lb_ville
+    description: ''
+  - name: nb_score_medaille
+    description: ''

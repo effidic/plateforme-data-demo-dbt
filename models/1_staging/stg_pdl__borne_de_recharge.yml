@@ -1,0 +1,61 @@
+version: 2
+models:
+- name: stg_pdl__borne_de_recharge
+  description: ''
+  columns:
+  - name: cd_departement
+    description: ''
+  - name: cd_id
+    description: ''
+  - name: cd_insee
+    description: ''
+  - name: cd_localisation
+    description: ''
+  - name: cd_recordid
+    description: ''
+  - name: cd_statut
+    description: ''
+  - name: cd_sup_id
+    description: ''
+  - name: dt_de_mise_a_jour
+    description: ''
+  - name: dt_de_mise_en_service
+    description: ''
+  - name: lb_adm_lb_lnom
+    description: ''
+  - name: lb_adr_add1
+    description: ''
+  - name: lb_adr_add2
+    description: ''
+  - name: lb_adr_add3
+    description: ''
+  - name: lb_adr_lieu
+    description: ''
+  - name: lb_code_postal
+    description: ''
+  - name: lb_commune
+    description: ''
+  - name: lb_coord
+    description: ''
+  - name: lb_departement
+    description: ''
+  - name: lb_epci
+    description: ''
+  - name: lb_fichier_source
+    description: ''
+  - name: lb_generation
+    description: ''
+  - name: lb_insee
+    description: ''
+  - name: lb_nat_id
+    description: ''
+  - name: lb_region
+    description: ''
+  - name: lb_sta_nm_anfr
+    description: ''
+  - name: lb_sup_nm_haut
+    description: ''
+  - name: lb_technologie
+    description: ''
+  - name: lb_tpo_id
+    description: ''

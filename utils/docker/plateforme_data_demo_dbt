@@ -1,6 +1,6 @@
 # Docker image to execute dbt (LOCAL, UAT, PROD)
 
-FROM python:3.9-slim-buster
+FROM mcr.microsoft.com/devcontainers/miniconda:3
 
 RUN apt-get update
 
