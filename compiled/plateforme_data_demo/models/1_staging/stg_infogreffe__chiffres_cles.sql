@@ -1,5 +1,7 @@
 with source as (
-      select _FILE_NAME , *  from `plateforme-data-demo`.`0_raw_infogreffe`.`chiffres_cles`
+      select _FILE_NAME , * except(fiche_identite) from `plateforme-data-demo`.`0_raw_infogreffe`.`chiffres_cles_2022`
+      UNION ALL 
+      select _FILE_NAME , *  from `plateforme-data-demo`.`0_raw_infogreffe`.`chiffres_cles_2021`
 ),
 renamed as (
     select
@@ -42,7 +44,6 @@ renamed as (
         safe_cast(resultat_3 as decimal) as mt_resultat_3,
         effectif_3 as lb_effectif_3,
         id as cd_id,
-        fiche_identite as lb_fiche_identite,
         tranche_ca_millesime_1 as lb_tranche_ca_millesime_1,
         tranche_ca_millesime_2 as lb_tranche_ca_millesime_2,
         tranche_ca_millesime_3 as lb_tranche_ca_millesime_3
@@ -71,7 +72,6 @@ renamed as (
         cd_geolocalisation,
         dt_publication,
         cd_id,
-        lb_fiche_identite, 
         cd_annee_1 as cd_annee,
         dt_cloture_exercice_1 as dt_cloture_exercice,
         nb_mois_periode_1 as nb_mois_periode,
@@ -103,7 +103,6 @@ UNION ALL
         cd_geolocalisation,
         dt_publication,
         cd_id,
-        lb_fiche_identite, 
         cd_annee_2 as cd_annee,
         dt_cloture_exercice_2 as dt_cloture_exercice,
         nb_mois_periode_2 as nb_mois_periode,
@@ -135,7 +134,6 @@ UNION ALL
         cd_geolocalisation,
         dt_publication,
         cd_id,
-        lb_fiche_identite, 
         cd_annee_3 as cd_annee,
         dt_cloture_exercice_3 as dt_cloture_exercice,
         nb_mois_periode_3 as nb_mois_periode,
