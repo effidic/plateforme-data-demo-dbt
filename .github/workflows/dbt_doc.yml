@@ -31,7 +31,7 @@ jobs:
               -e "KEYFILE_PRIVATE_KEY=$KEYFILE_PRIVATE_KEY" 
               -v "$(pwd)/dbt_docs:/tmp/target"
               europe-west1-docker.pkg.dev/plateforme-data-demo/effidic-registry/plateforme-data-demo-dbt:main
-              /bin/bash -c "dbt docs generate && pwd && ls -ltra && cp custom_doc/* target/ && sed -i.bak 's|<head>|<head>\n\t<link rel=\"stylesheet\" href=\"/effidic.css\" />|' target/index.html"
+              /bin/bash -c "dbt docs generate && pwd && ls -ltra && cp custom_doc/* target/ && sed -i.bak 's|<head>|<head>\n\t<link rel=\"stylesheet\" href=\"/plateforme-data-demo-dbt/effidic.css\" />|' target/index.html"
           
           - name: Deploy to GitHub Pages
             uses: peaceiris/actions-gh-pages@v3
