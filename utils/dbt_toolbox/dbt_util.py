@@ -138,7 +138,7 @@ class DBTUtil:
                 f.write(checksum)
 
     @staticmethod
-    def get_missing_build_models() -> List[str]:
+    def get_missing_build_models() -> List[str]: 
         expected_checksum_sql_models = {**DBTUtil.get_expected_checksum_models(DBT_SNAPSHOTS_PATH, [".sql"]) 
         , **DBTUtil.get_expected_checksum_models( DBT_MODELS_PATH, [".sql"] ) }
         actual_checksum_sql_models = DBTUtil.get_actual_checksum_models(DBT_FLAG_BUILD, [".sql"] )

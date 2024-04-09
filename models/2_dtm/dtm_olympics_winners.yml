@@ -3,11 +3,17 @@ models:
 - name: dtm_olympics_winners
   description: ''
   columns:
+  - name: bl_provient_pays_riche
+    description: ''
   - name: cd_pays
     description: ''
   - name: dt_annee
     description: ''
   - name: lb_athlete
+    description: ''
+  - name: lb_athlete_name
+    description: ''
+  - name: lb_athlete_surname
     description: ''
   - name: lb_discipline
     description: ''
@@ -24,6 +30,10 @@ models:
   - name: lb_sport
     description: ''
   - name: lb_ville
+    description: ''
+  - name: mt_pib_par_habitant
+    description: ''
+  - name: nb_population
     description: ''
   - name: nb_score_medaille
     description: ''

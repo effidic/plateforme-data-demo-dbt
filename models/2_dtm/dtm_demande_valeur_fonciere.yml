@@ -31,6 +31,10 @@ models:
     description: ''
   - name: cd_lot5
     description: ''
+  - name: cd_nature_culture
+    description: ''
+  - name: cd_nature_culture_speciale
+    description: ''
   - name: cd_postal
     description: ''
   - name: cd_type_local
@@ -53,6 +57,10 @@ models:
     description: ''
   - name: lb_fichier_source
     description: ''
+  - name: lb_nature_culture
+    description: ''
+  - name: lb_nature_culture_speciale
+    description: ''
   - name: lb_nature_mutation
     description: ''
   - name: lb_nombre_lots
@@ -61,9 +69,17 @@ models:
     description: ''
   - name: lb_type_local
     description: ''
+  - name: mt_metre_carre_bati
+    description: ''
+  - name: mt_metre_carre_lot_1
+    description: ''
+  - name: mt_metre_carre_terrain
+    description: ''
   - name: mt_valeur_fonciere
     description: ''
-  - name: mt_valeur_fonciere_ht
+  - name: mt_valeur_fonciere_hors_commission
+    description: ''
+  - name: mt_valeur_fonciere_totale
     description: ''
   - name: nb_disposition
     description: ''

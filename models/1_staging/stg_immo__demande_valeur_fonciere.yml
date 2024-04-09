@@ -31,6 +31,10 @@ models:
     description: ''
   - name: cd_lot5
     description: ''
+  - name: cd_nature_culture
+    description: ''
+  - name: cd_nature_culture_speciale
+    description: ''
   - name: cd_postal
     description: ''
   - name: cd_type_local
@@ -52,6 +56,10 @@ models:
   - name: lb_commune
     description: ''
   - name: lb_fichier_source
+    description: ''
+  - name: lb_nature_culture
+    description: ''
+  - name: lb_nature_culture_speciale
     description: ''
   - name: lb_nature_mutation
     description: ''
