@@ -35,12 +35,19 @@ renamed AS (
         safe_cast(nombre_lots AS int) AS lb_nombre_lots,
         code_type_local AS cd_type_local,
         type_local AS lb_type_local,
+        code_nature_culture AS cd_nature_culture,
+        nature_culture AS lb_nature_culture,
+        code_nature_culture_speciale AS cd_nature_culture_speciale,
+        nature_culture_speciale AS lb_nature_culture_speciale,
         safe_cast(surface_reelle_bati AS decimal) AS nb_surface_reelle_bati,
         safe_cast(nombre_pieces_principales AS int) AS lb_nombre_pieces_principales,
         safe_cast(surface_terrain AS decimal) AS nb_surface_terrain,
         safe_cast(longitude AS decimal) AS cd_longitude,
         safe_cast(latitude AS decimal) AS cd_latitude,
-        'simple' as cd_type_mandat
+        CASE 
+            WHEN mod(safe_cast(right(id_mutation, 6) AS int), 7) = 1 THEN 'simple' 
+            ELSE 'exclusif'
+        END as cd_type_mandat
     FROM source
 )
 SELECT * from renamed
