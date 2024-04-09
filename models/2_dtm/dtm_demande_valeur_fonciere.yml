@@ -1,7 +1,7 @@
 version: 2
 models:
 - name: dtm_demande_valeur_fonciere
-  description: ''
+  description: 'Datamart contenant les valeurs foncière des Pays de la Loire.'
   columns:
   - name: cd_adresse_numero
     description: ''
