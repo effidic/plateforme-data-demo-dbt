@@ -6,7 +6,7 @@
     // Décommentez si vous utilisez un Dockerfile pour votre production et commentez la ligne du dessus
 	"build": { 
 		"context": "..",
-		"dockerfile": "utils/docker/plateforme_data_demo_dbt"
+		"dockerfile": "../utils/docker/plateforme_data_demo_dbt"
 	},
 
     // Ajoutez des extensions VS Code recommandées pour le développement Python
@@ -24,5 +24,5 @@
 
 
     // Configuration de l'exécution automatique de la commande "pip install" pour les dépendances Python
-    "postCreateCommand": "touch .env && pip install --upgrade pip --user && pip install invoke && invoke install"
+    "postCreateCommand": "touch .env && pip install --upgrade pip --user && pip install invoke && invoke install && cp profiles.yml /tmp"
 }
