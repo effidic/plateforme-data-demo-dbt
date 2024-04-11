@@ -14,6 +14,7 @@ with all_olympics AS (
 SELECT 
     all_olympics.lb_fichier_source as lb_saison,
     all_olympics.dt_annee,
+
     all_olympics.lb_ville,
     all_olympics.lb_sport,
     all_olympics.lb_discipline,
@@ -26,7 +27,7 @@ SELECT
     all_olympics.lb_evenement,
     all_olympics.lb_medaille,
     CASE 
-        WHEN lb_medaille = 'Gold' THEN 3
+        WHEN lb_medaille = 'Gold' THEN 8
         WHEN lb_medaille = 'Silver' THEN 2
         WHEN lb_medaille = 'Bronze' THEN 1
         ELSE 0
