@@ -44,7 +44,6 @@ renamed AS (
         safe_cast(surface_terrain AS decimal) AS nb_surface_terrain,
         safe_cast(longitude AS decimal) AS cd_longitude,
         safe_cast(latitude AS decimal) AS cd_latitude,
-        null as test,
         CASE 
             WHEN mod(safe_cast(right(id_mutation, 6) AS int), 7) = 1 THEN 'simple' 
             ELSE 'exclusif'
