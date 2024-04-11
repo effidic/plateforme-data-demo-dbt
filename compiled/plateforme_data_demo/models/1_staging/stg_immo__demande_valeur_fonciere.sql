@@ -9,7 +9,7 @@ renamed AS (
         safe_cast( date_mutation AS date format 'YYYY-MM-DD' ) AS dt_mutation,
         numero_disposition AS nb_disposition,
         nature_mutation AS lb_nature_mutation,
-        safe_cast(valeur_fonciere AS int) AS mt_valeur_fonciere,
+        safe_cast(valeur_fonciere AS decimal) AS mt_valeur_fonciere,
         adresse_numero AS cd_adresse_numero,
         adresse_suffixe AS lb_adresse_suffixe,
         adresse_nom_voie AS lb_adresse_nom_voie,
