@@ -87,5 +87,3 @@ models:
     description: ''
   - name: nb_surface_terrain
     description: ''
-  - name: test
-    description: ''
