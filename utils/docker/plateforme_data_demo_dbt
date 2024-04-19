@@ -19,6 +19,9 @@ COPY models ${APPLICATION_HOME}/models
 COPY macros ${APPLICATION_HOME}/macros
 COPY snapshots ${APPLICATION_HOME}/snapshots
 
+#customisation de la documentation dbt
+COPY custom_doc ${APPLICATION_HOME}/custom_doc
+
 RUN pip3 install -U -q -r requirements.txt
 
 RUN dbt deps
