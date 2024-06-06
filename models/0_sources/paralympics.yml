@@ -1,0 +1,82 @@
+# A exécuter pour créer la table:
+# dbt run-operation stage_external_sources --args "select: paralympics" --vars "ext_full_refresh: true" 
+
+version: 21
+
+sources:
+  - name: paralympics
+    description: Test
+    schema: 0_raw_paralympics
+    tables:
+      - name: summer_para
+        description: test
+        external:
+          location: gs://effidic-open-data/paralympics/summer_paralympics*
+          options:
+            format: csv
+            field_delimiter: ','
+            quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+          - name: Year
+            data_type: integer
+          - name: Host_city
+            data_type: string
+          - name: host_country
+            data_type: string
+          - name: Country
+            data_type: string
+          - name: Country_code
+            data_type: string
+          - name: Gold
+            data_type: integer
+          - name: Silver
+            data_type: integer
+          - name: Bronze
+            data_type: integer
+          - name: M_total
+            data_type: integer
+          - name: Men
+            data_type: integer
+          - name: Women
+            data_type: integer
+          - name: P_total
+            data_type: integer
+      - name: winter_para
+        description: test
+        external:
+          location: gs://effidic-open-data/paralympics/winter_paralympics*
+          options:
+            format: csv
+            field_delimiter: ','
+            quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+          - name: Year
+            data_type: integer
+          - name: Host_city
+            data_type: string
+          - name: host_country
+            data_type: string
+          - name: Country
+            data_type: string
+          - name: Country_code
+            data_type: string
+          - name: Gold
+            data_type: integer
+          - name: Silver
+            data_type: integer
+          - name: Bronze
+            data_type: integer
+          - name: M_total
+            data_type: integer
+          - name: Men
+            data_type: integer
+          - name: Women
+            data_type: integer
+          - name: P_total
+            data_type: integer

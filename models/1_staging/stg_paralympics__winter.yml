@@ -1,0 +1,27 @@
+version: 2
+models:
+- name: stg_paralympics__winter
+  description: ''
+  columns:
+  - name: cd_pays
+    description: ''
+  - name: dt_annee
+    description: ''
+  - name: lb_pays
+    description: ''
+  - name: lb_pays_hote
+    description: ''
+  - name: nb_m_bronze
+    description: ''
+  - name: nb_m_femme
+    description: ''
+  - name: nb_m_homme
+    description: ''
+  - name: nb_m_or
+    description: ''
+  - name: nb_m_silver
+    description: ''
+  - name: nb_total_medailles
+    description: ''
+  - name: nb_total_p
+    description: ''

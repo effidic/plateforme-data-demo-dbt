@@ -1,0 +1,11 @@
+version: 2
+models:
+- name: dtm_paralympics_olympics
+  description: ''
+  columns:
+  - name: lb_medaille
+    description: ''
+  - name: lb_pays
+    description: ''
+  - name: nb_total_medailles
+    description: ''

@@ -52,7 +52,7 @@ def install(c):
     """Install project dependancies, create conda environment inside a project (similar to venv)"""
     if not os.path.exists(".env"):
         print(
-            f'/!\ Error - You need to create the file ".env". See the instruction in the README.md'
+            fr'/!\ Error - You need to create the file ".env". See the instruction in the README.md'
         )
         exit(1)
     shutil.rmtree(VENV, ignore_errors=True)
