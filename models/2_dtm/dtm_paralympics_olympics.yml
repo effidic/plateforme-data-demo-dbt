@@ -3,9 +3,17 @@ models:
 - name: dtm_paralympics_olympics
   description: ''
   columns:
-  - name: lb_medaille
+  - name: cd_pays
     description: ''
-  - name: lb_pays
+  - name: dt_annee
     description: ''
-  - name: nb_total_medailles
+  - name: lb_compet
+    description: ''
+  - name: lb_saison
+    description: ''
+  - name: nb_m_bronze
+    description: ''
+  - name: nb_m_or
+    description: ''
+  - name: nb_m_silver
     description: ''
