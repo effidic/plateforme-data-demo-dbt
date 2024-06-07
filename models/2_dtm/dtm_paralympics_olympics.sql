@@ -34,7 +34,9 @@ all_olympics AS (
         "olympique" as lb_compet,
         dt_annee,
         cd_pays,
-        lb_medaille
+        lb_medaille,
+        lb_discipline,
+        lb_evenement
     FROM {{ ref(P_TABLE_3) }}
     UNION ALL 
     SELECT
@@ -42,8 +44,11 @@ all_olympics AS (
         "olympique" as lb_compet,
         dt_annee,
         cd_pays,
-        lb_medaille
+        lb_medaille,
+        lb_discipline,
+        lb_evenement
     FROM {{ ref(P_TABLE_4) }}
+    GROUP BY  cd_pays,lb_saison, lb_compet, dt_annee, lb_medaille, lb_discipline, lb_evenement
 ),
 paralympics_count AS (
     SELECT
@@ -71,9 +76,13 @@ olympics_count AS (
         cd_pays,
         lb_compet,
         lb_medaille,
-        COUNT(lb_medaille) AS total_medailles_olympics
-    FROM all_olympics
-    GROUP BY cd_pays, dt_annee, lb_saison, lb_compet, lb_medaille
+        COUNT(DISTINCT lb_evenement) AS total_medailles_olympics
+        FROM all_olympics
+        GROUP BY dt_annee,
+        lb_saison,
+        cd_pays,
+        lb_compet,
+        lb_medaille,lb_compet
 )
 SELECT 
     paralympics_count.lb_saison,
@@ -85,10 +94,12 @@ SELECT
     paralympics_count.nb_m_bronze
     FROM paralympics_count
 UNION ALL
-SELECT * FROM (SELECT
-lb_saison,CAST(dt_annee as integer) as dt_annee, cd_pays, lb_compet,lb_medaille, total_medailles_olympics
+SELECT *
+FROM (SELECT
+lb_saison,CAST(dt_annee as integer) as dt_annee, cd_pays, lb_compet, lb_medaille, total_medailles_olympics, SUM()
 
-FROM olympics_count)
-PIVOT(sum(total_medailles_olympics) FOR lb_medaille IN ('Gold','Silver','Bronze'))
+FROM olympics_count
+GROUP BY lb_saison, dt_annee, cd_pays, lb_compet, lb_medaille, total_medailles_olympics
 
--- ORDER BY paralympics_count.lb_pays
+)
+PIVOT(SUM(total_medailles_olympics) FOR lb_medaille IN ('Gold','Silver','Bronze'))
