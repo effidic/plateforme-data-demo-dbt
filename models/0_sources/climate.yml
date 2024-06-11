@@ -1,0 +1,42 @@
+# A exécuter pour créer la table:
+# dbt run-operation stage_external_sources --args "select: climate" --vars "ext_full_refresh: true" 
+
+version: 21
+
+sources:
+  - name: climate
+    description: Test
+    schema: 0_raw_climate
+    tables:
+      - name: climate
+        description: test
+        external:
+          location: gs://effidic-open-data/climate/climate*
+          options:
+            format: csv
+            field_delimiter: ','
+            quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+          - name: ID
+            data_type: integer
+          - name: Produit
+            data_type: string
+          - name: Categorie
+            data_type: string
+          - name: Total_kg
+            data_type: integer
+          - name: Agriculture
+            data_type: integer
+          - name: Production_biocarburant
+            data_type: integer
+          - name: Transformation_alimentaire
+            data_type: integer
+          - name: Emballage
+            data_type: integer
+          - name: Transport
+            data_type: integer
+          - name: Vente
+            data_type: integer

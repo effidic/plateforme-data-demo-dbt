@@ -11,7 +11,7 @@ dbt-env/
 
 # private key
 *.p8 
-
+*.json
 ################################################################
 # Default .gitignore for python projects: 
 # https://github.com/github/gitignore/blob/main/Python.gitignore

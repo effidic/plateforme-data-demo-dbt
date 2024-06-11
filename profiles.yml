@@ -20,4 +20,3 @@ plateforme_data_demo:
       type: bigquery 
       config:
         partial_parse: true
-

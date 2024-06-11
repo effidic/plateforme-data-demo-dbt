@@ -11,9 +11,13 @@ models:
     description: ''
   - name: lb_saison
     description: ''
+  - name: mt_pib_par_habitant
+    description: ''
   - name: nb_m_bronze
     description: ''
   - name: nb_m_or
     description: ''
   - name: nb_m_silver
+    description: ''
+  - name: nb_population
     description: ''

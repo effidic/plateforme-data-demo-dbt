@@ -1,0 +1,25 @@
+version: 2
+models:
+- name: stg_climat
+  description: ''
+  columns:
+          - name: ID
+            data_type: integer
+          - name: Produit
+            data_type: string
+          - name: Categorie
+            data_type: string
+          - name: Total_kg
+            data_type: integer
+          - name: Agriculture
+            data_type: integer
+          - name: Production_biocarburant
+            data_type: integer
+          - name: Transformation_alimentaire
+            data_type: integer
+          - name: Emballage
+            data_type: integer
+          - name: Transport
+            data_type: integer
+          - name: Vente
+            data_type: integer
