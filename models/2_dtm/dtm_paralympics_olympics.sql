@@ -3,6 +3,7 @@
 {%- set P_TABLE_3= 'stg_olympics__summer' -%}
 {%- set P_TABLE_4= 'stg_olympics__winter' -%}
 
+
 WITH all_paralympics AS (
     SELECT
         "summer" as lb_saison,
@@ -52,28 +53,64 @@ all_olympics AS (
 
 ),
 paralympics_count AS (
+    -- Première partie du UNION ALL utilisant all_paralympics
     SELECT
-        lb_saison,
+        all_paralympics.lb_saison,
         all_paralympics.dt_annee,
         all_paralympics.nb_m_or,
         all_paralympics.nb_m_bronze,
         all_paralympics.nb_m_silver,
-        lb_compet,
+        all_paralympics.lb_compet,
         all_paralympics.cd_pays,
-        SUM(nb_total_medailles) AS total_medailles_paralympics,
-        olympics_dict.nb_population as nb_population,
-        olympics_dict.mt_pib_par_habitant as mt_pib_par_habitant,
+        SUM(all_paralympics.nb_total_medailles) AS total_medailles_paralympics,
+        olympics_dict.nb_population,
+        olympics_dict.mt_pib_par_habitant,
         olympics_dict.lb_pays
-    FROM all_paralympics LEFT JOIN {{ ref('stg_olympics__dictionnaire') }} AS olympics_dict
+    FROM all_paralympics 
+    LEFT JOIN {{ ref('stg_olympics__dictionnaire') }} AS olympics_dict
     ON olympics_dict.cd_pays = all_paralympics.cd_pays
-    GROUP BY cd_pays, olympics_dict.lb_pays, 
+    GROUP BY 
+        all_paralympics.lb_saison,
         all_paralympics.dt_annee,
         all_paralympics.nb_m_or,
         all_paralympics.nb_m_bronze,
         all_paralympics.nb_m_silver,
-        lb_saison, lb_compet,
-        nb_population, mt_pib_par_habitant
+        all_paralympics.lb_compet,
+        all_paralympics.cd_pays,
+        olympics_dict.nb_population,
+        olympics_dict.mt_pib_par_habitant,
+        olympics_dict.lb_pays
+
+    UNION ALL 
+
+    SELECT 
+        olympics_recent.lb_saison,
+        olympics_recent.dt_annee,
+        olympics_recent.nb_m_or,
+        olympics_recent.nb_m_bronze,
+        olympics_recent.nb_m_silver,
+        'olympique' AS lb_compet,
+        COALESCE(olympics_dict.cd_pays, 'UNKNOWN') AS cd_pays,
+        SUM(olympics_recent.nb_total_p) AS total_medailles_paralympics,
+        COALESCE(olympics_dict.nb_population, 0) AS nb_population,
+        COALESCE(olympics_dict.mt_pib_par_habitant, 0.0) AS mt_pib_par_habitant,
+        COALESCE(olympics_dict.lb_pays, olympics_recent.lb_pays) AS lb_pays
+    FROM {{ ref('stg_olympics_recent') }} AS olympics_recent
+    LEFT JOIN {{ ref('stg_olympics__dictionnaire') }} AS olympics_dict
+    ON olympics_recent.lb_pays = olympics_dict.lb_pays
+    GROUP BY 
+        olympics_recent.lb_saison,
+        olympics_recent.dt_annee,
+        olympics_recent.nb_m_or,
+        olympics_recent.nb_m_bronze,
+        olympics_recent.nb_m_silver,
+        COALESCE(olympics_dict.cd_pays, 'UNKNOWN'),
+        COALESCE(olympics_dict.nb_population, 0),
+        COALESCE(olympics_dict.mt_pib_par_habitant, 0.0),
+        COALESCE(olympics_dict.lb_pays, olympics_recent.lb_pays)
 ),
+
+
 olympics_count AS (
     SELECT
         dt_annee,
@@ -100,19 +137,20 @@ SELECT
     paralympics_count.lb_compet,
     nb_population as nb_population,
     mt_pib_par_habitant as mt_pib_par_habitant,
-    lb_pays,
+    paralympics_count.lb_pays,
     paralympics_count.nb_m_or,
     paralympics_count.nb_m_silver,
     paralympics_count.nb_m_bronze
 
-    FROM paralympics_count
+    FROM paralympics_count 
+
 UNION ALL
 SELECT *
 FROM (SELECT
-lb_saison,CAST(dt_annee as integer) as dt_annee, cd_pays, lb_compet, nb_population as nb_population, mt_pib_par_habitant as mt_pib_par_habitant, lb_pays, lb_medaille, total_medailles_olympics
+olympics_count.lb_saison,CAST(olympics_count.dt_annee as integer) as dt_annee, cd_pays, lb_compet, nb_population as nb_population, mt_pib_par_habitant as mt_pib_par_habitant, olympics_count.lb_pays, lb_medaille, total_medailles_olympics
 
-FROM olympics_count
-GROUP BY lb_saison, dt_annee, cd_pays, lb_compet, lb_medaille, total_medailles_olympics,nb_population, mt_pib_par_habitant,olympics_count.lb_pays
+FROM olympics_count 
+GROUP BY olympics_count.lb_saison, olympics_count.dt_annee, cd_pays, lb_compet, lb_medaille, total_medailles_olympics,nb_population, mt_pib_par_habitant,olympics_count.lb_pays
 
 )
 PIVOT(SUM(total_medailles_olympics) FOR lb_medaille IN ('Gold','Silver','Bronze'))

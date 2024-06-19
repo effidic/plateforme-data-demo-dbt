@@ -87,3 +87,29 @@ sources:
             data_type: string
           - name: Medaille
             data_type: string
+      - name: olympics_recent
+        description: test
+        external:
+          location: gs://effidic-open-data/olympics/olympic_medals_2016_2022*
+          options:
+            format: csv
+            field_delimiter: ','
+            quote: '"'
+            allow_quoted_newlines: true
+            skip_leading_rows: 1
+            preserve_ascii_control_characters: true
+        columns:
+          - name: Year
+            data_type: integer
+          - name: Country
+            data_type: string
+          - name: Gold
+            data_type: integer
+          - name: Silver
+            data_type: integer
+          - name: Bronze
+            data_type: integer
+          - name: Games_Type
+            data_type: string
+          - name: Total
+            data_type: integer

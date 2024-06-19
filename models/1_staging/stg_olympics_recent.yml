@@ -1,0 +1,19 @@
+version: 2
+models:
+- name: stg_olympics__recent
+  description: ''
+  columns:
+  - name: Year
+    data_type: integer
+  - name: Country
+    data_type: string
+  - name: Gold
+    data_type: integer
+  - name: Silver
+    data_type: integer
+  - name: Bronze
+    data_type: integer
+  - name: Games_Type
+    data_type: string
+  - name: Total
+    data_type: integer

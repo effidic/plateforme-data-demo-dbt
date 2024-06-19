@@ -5,6 +5,7 @@ renamed AS (
     SELECT 
         /*_FILE_NAME AS lb_fichier_source,*/
         ID as cd_id,
+        Produit as lb_prod,
         Categorie as lb_cat,
         Total_kg as nb_kg,
         Agriculture as nb_agri,
