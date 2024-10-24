@@ -3,7 +3,7 @@ with source AS (
 ),
 renamed AS (
     SELECT 
-        _FILE_NAME AS lb_fichier_source,
+        _FILE_NAME AS lb_fichier_sourcezz,
         id_parcelle AS id_parcelle,
         id_mutation AS cd_id_mutation,
         safe_cast( date_mutation AS date format 'YYYY-MM-DD' ) AS dt_mutation,
