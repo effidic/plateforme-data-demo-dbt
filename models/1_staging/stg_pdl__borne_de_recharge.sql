@@ -4,7 +4,7 @@ with source as (
 renamed as (
     SELECT 
         _FILE_NAME as lb_fichier_source,
-        ifnull(Commune , 'NA' ) as lb_commune,
+        Commune as lb_commune,
         epci as lb_epci,
         Departement as lb_departement,
         Region as lb_region,
