@@ -5,6 +5,8 @@ models:
   columns:
   - name: cd_type_mandat
     description: ''
+  - name: dummy_column_polytech
+    description: ''
   - name: lb_fichier_source
     description: ''
   - name: mt_borne_inf_interval

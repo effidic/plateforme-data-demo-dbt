@@ -10,7 +10,8 @@ renamed AS (
         safe_cast(replace(frais_flat, '€', '') AS decimal) AS mt_frais_plat,
         safe_cast(replace(frais_pourcentage, '%', '') AS decimal) AS mt_frais_pourcentage,
         safe_cast(replace(stationnement, '€', '') AS decimal) AS mt_frais_stationnement,
-        safe_cast(replace(complement, '€', '') AS decimal) AS mt_complement
+        safe_cast(replace(complement, '€', '') AS decimal) AS mt_complement,
+        'dummy' as dummy_column_polytech
     FROM source
 )
 SELECT * from renamed
